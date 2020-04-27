@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebMVCLaptop.Service;
 using WebMVCLaptop.Models;
 using WebMVCLaptop.Data;
+using System.Linq;
 
 namespace WebMVCLaptop.Controllers
 {
@@ -25,18 +26,21 @@ namespace WebMVCLaptop.Controllers
         {
             
             
-            return View();
+            return View(_context.Recipes);
         }
 
-        // GET: Recipe/Details/5
-        public ActionResult Details(int? id)
+        // GET: Recipe/Details/2
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var recipe = new Recipe();
+            //var recipe = new Recipe();
+
+            var recipe = _context.Recipes.RecipeList.FirstOrDefault(m => m.id == id);
+
             if (recipe == null)
             {
                 return NotFound();
