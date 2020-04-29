@@ -1,0 +1,68 @@
+﻿@model WebMVCLaptop.Models.Recipe
+
+@{
+    ViewData["Title"] = "Details";
+    var strimage = "/images/" + Model.image;
+}
+
+<table>
+    <tr>
+        <td><h4>@Html.DisplayFor(model => model.name)</h4></td>
+        <td><img onerror="this.style.display='none'" src="@strimage" class="img-thumbnail" width="304" height="236" /></td>
+    </tr>
+</table>
+<br />
+
+<div>
+    @{ if (Model.ingredients != null)
+        {
+            <ul style="list-style-type:none;">
+                @foreach (var ing in Model.ingredients)
+                {
+                    <li>
+                        @Html.DisplayFor(modelItem => ing.name)
+                    </li>
+                }
+            </ul>
+        }
+    }
+
+    @{ if (Model.steps != null)
+        {
+            <ol style="list-style-type:none;">
+                @foreach (var step in Model.steps)
+                {
+                    <li>
+                        @Html.DisplayFor(modelItem => step.order). @Html.DisplayFor(modelItem => step.text)
+                    </li>
+                }
+            </ol>
+        }
+    }
+    <br />
+
+    @if (!string.IsNullOrEmpty(Model.notes))
+    {
+        <h5>Notes</h5>
+        <p>@Html.DisplayFor(modelItem => Model.notes)</p>
+        <br />
+    }
+
+    @if (!string.IsNullOrEmpty(Model.keywords))
+    {
+        
+        <p>Keywords: @Html.DisplayFor(modelItem => Model.keywords)</p>
+        <br />
+    }
+
+    @if (!string.IsNullOrEmpty(Model.originalURL))
+    {
+        <p>Original URL <a href="@Model.originalURL">@Model.originalURL</a></p>
+        <br />
+    }
+
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    <a asp-action="Index">Back to List</a>
+</div>

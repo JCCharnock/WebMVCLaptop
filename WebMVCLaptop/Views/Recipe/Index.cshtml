@@ -1,14 +1,46 @@
-﻿
+﻿@model RecipeKeywordViewModel
+
 @{
-    ViewData["Title"] = "Recipe";
-
-
+    ViewData["Title"] = "Index";
+    var orderedModel = Model.Recipes.OrderBy(recipe => recipe.name);
 }
 
+<form asp-controller="Recipe" asp-action="Index">
+    <p>
+        Keyword: <select asp-for="Keyword" asp-items="Model.Keywords">
+            <option value="">All</option>
+        </select>
+        Contained in name: <input type="text" name="SearchString">
+        <input type="submit" value="Search" />
+    </p>
+</form>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 
-@{ 
-    var x = 1;
-}
 
-<h1>Recipe [Views/Recipe/Index.cshtml]</h1>
+<h3>Contents</h3>
 
+<table class="table">
+    <tbody>
+        @foreach (var item in orderedModel)
+        {
+            <tr>
+                <td>
+
+                    @Html.DisplayFor(modelItem => item.name)
+
+                </td>
+                <td>
+                    <img onerror="this.style.display='none'" src="@Url.Content("/images/" + item.image)" alt="@Html.DisplayFor(modelItem => item.name)" class="img-thumbnail" height="84" width="84" />
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

@@ -5,6 +5,7 @@ using System.Text.Json;
 using WebMVCLaptop.Models;
 using Microsoft.AspNetCore.Hosting;
 using System;
+using WebMVCLaptop.Data;
 
 namespace WebMVCLaptop.Service
 {
@@ -22,6 +23,14 @@ namespace WebMVCLaptop.Service
             get { return Path.Combine(WebHostEnvironment.WebRootPath, "data", "recipe.json"); }
         }
 
+
+        private static string JsonFileNameNonWeb()
+        {
+            //string strtemp = AppDomain.CurrentDomain.BaseDirectory;
+            string strtemp = Directory.GetCurrentDirectory();
+            return Path.Combine(strtemp, "wwwroot","data", "recipe.json");
+        }
+
         public IEnumerable<Recipe> GetRecipes()
         {
 
@@ -37,6 +46,39 @@ namespace WebMVCLaptop.Service
             }
         }
 
+        // write back to json file
+        public static void WriteToJsonFile(WebMVCLaptopContext context)
+        {
+            //shouldn't need to to this
+            //but if you don't bits of the old context are left in the file
+            File.Delete(JsonFileNameNonWeb());
+
+            using(var outputStream = File.OpenWrite(JsonFileNameNonWeb()))
+            {
+                // first delete 
+
+
+                JsonSerializer.Serialize<IEnumerable<Recipe>>(
+                    new Utf8JsonWriter(outputStream, new JsonWriterOptions
+                    {
+                        SkipValidation = true,
+                        Indented = true
+                    }),
+                    context.Recipes.RecipeList
+                );
+            }
+        }
+
+        public static void DeleteRecipe(string id, WebMVCLaptopContext context)
+        {
+            List<Recipe> tlist = context.Recipes.RecipeList.ToList<Recipe>();
+            tlist = tlist.Where(p => p.id != id).ToList();
+            context.Recipes.RecipeList = tlist.ToArray();
+            //DANGER!!
+            WriteToJsonFile(context);
+        }
+
+
         private void ManupulateRecipeJson()
         {
             Recipe[] temp = new Recipe[] { };
@@ -50,15 +92,22 @@ namespace WebMVCLaptop.Service
                         PropertyNameCaseInsensitive = true
                     });
 
-                //foreach (Recipe rec in temp)
-                //{
-                //    foreach (Ingredient ing in rec.ingredients)
-                //    {
-                //        //ing.type = null;
-                //    }
-                //}
-                //jsonFileReader.Close();  //needed?
+                foreach (Recipe rec in temp)
+                {
+                    if (rec.ingredients != null)
+                    {
+                        foreach (Ingredient ing in rec.ingredients)
+                        {
+                            //ing.name = ing.quantity + " " + ing.name;
+                            //ing.quantity = null;
+                        }
+                    }
+                }
+                jsonFileReader.Close();  //needed?
             }
+
+            // DELETING FILE - ARE YOU SURE
+            File.Delete(JsonFileNameNonWeb());
 
             using (var outputStream = File.OpenWrite(JsonFileName))
             {

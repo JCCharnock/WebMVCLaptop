@@ -1,0 +1,69 @@
+﻿@model WebMVCLaptop.Models.Recipe
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<form asp-action="Edit">
+    <table class="table" width="100%">
+        <tr>
+            <td valign="middle" width="25%">
+                <div class="form-group">
+                    <label asp-for="name" class="control-label"></label>
+                    <input asp-for="name" class="form-control" />
+                    <span asp-validation-for="name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="notes" class="control-label"></label>
+                    <textarea asp-for="notes" class="form-control rounded-0" rows="7"></textarea>
+                    <span asp-validation-for="notes" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">keywords</label>
+                    <input asp-for="keywords" class="form-control" />
+                    <span asp-validation-for="keywords" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="image" class="control-label"></label>
+                    <input asp-for="image" class="form-control" />
+                    <span asp-validation-for="image" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">original URL</label>
+                    <input asp-for="originalURL" class="form-control" />
+                    <span asp-validation-for="originalURL" class="text-danger"></span>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <label class="control-label">ingredients</label>
+                    <textarea class="form-control rounded-0" name="ingredients" rows="10">@if (Model.ingredients!=null)foreach (Ingredient i in Model.ingredients)
+    {
+        @Html.DisplayFor(modelItem => i.name)
+        @Html.Raw("\n");
+    }</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">directions</label>
+                    <textarea name="steps" class="form-control rounded-0" id="steps" rows="10">@if (Model.steps!=null)foreach (Step s in Model.steps)
+    {
+        @Html.DisplayFor(modelItem => s.text)
+        @Html.Raw("\n");
+    }</textarea>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

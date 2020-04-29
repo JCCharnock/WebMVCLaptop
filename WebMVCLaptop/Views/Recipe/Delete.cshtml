@@ -1,0 +1,50 @@
+﻿@model WebMVCLaptop.Models.Recipe
+
+@{
+    ViewData["Title"] = "Delete";
+    var str = Model.name;
+}
+
+<h3>Delete</h3>
+
+<h4>Are you sure you want to delete this?</h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.notes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.notes)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+        <dd class="col-sm-10">
+            <img onerror="this.style.display='none'" src="@Url.Content("/images/" + Model.image)" alt="@Html.DisplayFor(modelItem => Model.name)" class="img-thumbnail" height="84" width="84" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.originalURL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.originalURL)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

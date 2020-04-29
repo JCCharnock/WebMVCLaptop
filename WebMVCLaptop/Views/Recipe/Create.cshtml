@@ -1,0 +1,65 @@
+﻿@model WebMVCLaptop.Models.Recipe
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Recipe</h4>
+
+<form asp-action="Create">
+    <table class="table" width="100%">
+        <tr>
+            <td valign="middle" width="25%">
+                <div class="form-group">
+                    <label asp-for="name" class="control-label"></label>
+                    <input asp-for="name" class="form-control" />
+                    <span asp-validation-for="name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="notes" class="control-label"></label>
+                    <textarea asp-for="notes" class="form-control rounded-0" rows="7"></textarea>
+                    <span asp-validation-for="notes" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">keywords</label>
+                    <input asp-for="keywords" class="form-control" />
+                    <span asp-validation-for="keywords" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="image" class="control-label"></label>
+                    <input asp-for="image" class="form-control" />
+                    <span asp-validation-for="image" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Original URL</label>
+                    <input asp-for="originalURL" class="form-control" />
+                    <span asp-validation-for="originalURL" class="text-danger"></span>
+                </div>
+            </td>
+            <td>
+                <div class="form-group">
+                    <label class="control-label">Ingredients</label>
+                    <textarea asp-for="ingredients" class="form-control rounded-0" id="ingredients" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Steps</label>
+                    <textarea asp-for="steps" class="form-control rounded-0" id="steps" rows="10"></textarea>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

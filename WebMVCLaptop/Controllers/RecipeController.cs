@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using WebMVCLaptop.Service;
 using WebMVCLaptop.Models;
 using WebMVCLaptop.Data;
-using System.Linq;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.View;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace WebMVCLaptop.Controllers
 {
@@ -20,13 +21,58 @@ namespace WebMVCLaptop.Controllers
             _context = context;
         }
 
-
         // GET: Recipe
-        public ActionResult Index()
+        public ActionResult Index(string keyword, string searchString)
         {
-            
-            
-            return View(_context.Recipes);
+
+            // need to break down space delimited keyword lists
+            var klists = from r in _context.Recipes.RecipeList where (!string.IsNullOrWhiteSpace(r.keywords)) select r.keywords;
+            List<string> klist = new List<string>();
+            foreach (string k in klists)
+            {
+                string[] ta = k.Split(' ');
+                for (int i = 0; i < ta.Length; i++)
+                {
+                    if (!string.IsNullOrWhiteSpace(ta[i]))
+                    {
+                        if (!klist.Contains(ta[i])) klist.Add(ta[i]);
+                    }
+                }
+            }
+
+            var recs = from r in _context.Recipes.RecipeList select r;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                recs = recs.Where(s => s.name.ToUpper().Contains(searchString.ToUpper()));
+            }
+
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                // replace this with some fancy LINQ query when I know how
+                recs = FilterRecipesByKeyword(recs, keyword);
+            }
+
+            var recipeKeywordVM = new RecipeKeywordViewModel()
+            {
+                Keywords = new SelectList(klist),
+                Recipes = recs.ToList()
+            };
+
+            return View(recipeKeywordVM);
+        }
+
+        private IEnumerable<Recipe> FilterRecipesByKeyword(IEnumerable<Recipe> recs, string keyword)
+        {
+            List<Recipe> ret = new List<Recipe>();
+            foreach(Recipe rec in recs)
+            {
+                if (rec.keywords != null)
+                {
+                    if (rec.keywords.Split(' ').Contains<string>(keyword)) ret.Add(rec);
+                }
+            }
+            return ret;
         }
 
         // GET: Recipe/Details/2
@@ -36,8 +82,6 @@ namespace WebMVCLaptop.Controllers
             {
                 return NotFound();
             }
-
-            //var recipe = new Recipe();
 
             var recipe = _context.Recipes.RecipeList.FirstOrDefault(m => m.id == id);
 
@@ -62,8 +106,8 @@ namespace WebMVCLaptop.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-
+                // does context exist at this point? YES
+                Recipe.CreateOrEditNewRecipe("", collection, _context);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -73,20 +117,31 @@ namespace WebMVCLaptop.Controllers
         }
 
         // GET: Recipe/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var recipe = _context.Recipes.RecipeList.FirstOrDefault(m => m.id == id);
+
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+
+            return View(recipe);
         }
 
         // POST: Recipe/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(string id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
-
+                Recipe.CreateOrEditNewRecipe(id, collection, _context);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -96,26 +151,42 @@ namespace WebMVCLaptop.Controllers
         }
 
         // GET: Recipe/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var recipe = _context.Recipes.RecipeList.FirstOrDefault(m => m.id == id);
+
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+
+            return View(recipe);
         }
 
         // POST: Recipe/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(string id, IFormCollection collection)
         {
-            try
+            if (id == null)
             {
-                // TODO: Add delete logic here
+                return NotFound();
+            }
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+            var recipe = _context.Recipes.RecipeList.FirstOrDefault(m => m.id == id);
+
+            if (recipe == null)
             {
-                return View();
+                return NotFound();
             }
+
+            WebMVCLaptop.Service.RecipeService.DeleteRecipe(id, _context);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
