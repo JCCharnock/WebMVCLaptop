@@ -6,6 +6,7 @@ using WebMVCLaptop.Models;
 using Microsoft.AspNetCore.Hosting;
 using System;
 using WebMVCLaptop.Data;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace WebMVCLaptop.Service
 {
@@ -28,7 +29,26 @@ namespace WebMVCLaptop.Service
         {
             //string strtemp = AppDomain.CurrentDomain.BaseDirectory;
             string strtemp = Directory.GetCurrentDirectory();
-            return Path.Combine(strtemp, "wwwroot","data", "recipe.json");
+            return Path.Combine(strtemp, "wwwroot", "data", "recipe.json");
+        }
+
+        internal IEnumerable<Recipe> GetSingle(string id)
+        {
+            Recipe[] list;
+            List<Recipe> ret = new List<Recipe>();
+            using (var jsonFileReader = File.OpenText(JsonFileName))
+            {
+                list = JsonSerializer.Deserialize<Recipe[]>(jsonFileReader.ReadToEnd(),
+                    new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+            }
+            for (int i = 0; i<list.Length; i++)
+            {
+                if (list[i].id == id) ret.Add(list[i]);
+            }
+            return ret;
         }
 
         public IEnumerable<Recipe> GetRecipes()
@@ -53,7 +73,7 @@ namespace WebMVCLaptop.Service
             //but if you don't bits of the old context are left in the file
             File.Delete(JsonFileNameNonWeb());
 
-            using(var outputStream = File.OpenWrite(JsonFileNameNonWeb()))
+            using (var outputStream = File.OpenWrite(JsonFileNameNonWeb()))
             {
                 // first delete 
 

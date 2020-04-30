@@ -9,9 +9,9 @@ using WebMVCLaptop.Service;
 
 namespace WebMVCLaptop.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
-    //[Produces("application/xml")]
+    [Produces("application/json")]
     public class RecipeServiceController : ControllerBase
     {
         public RecipeServiceController(Service.RecipeService recipeService)
@@ -22,9 +22,17 @@ namespace WebMVCLaptop.Controllers
         public RecipeService recipeService { get; }
 
         [HttpGet]
-        public IEnumerable<Recipe> GetAll()
+        public IEnumerable<Recipe> Get(string id)
         {
-            return recipeService.GetRecipes();
+            if (string.IsNullOrEmpty(id)) return recipeService.GetRecipes();
+            else return recipeService.GetSingle(id);
         }
+
+        //[HttpGet]
+        //public Recipe GetSingle(string id)
+        //{
+        //    return recipeService.GetSingle(id);
+        //}
+
     }
 }

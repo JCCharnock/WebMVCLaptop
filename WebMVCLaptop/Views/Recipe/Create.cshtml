@@ -4,10 +4,6 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Recipe</h4>
-
 <form asp-action="Create">
     <table class="table" width="100%">
         <tr>
@@ -33,18 +29,18 @@
                     <span asp-validation-for="image" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Original URL</label>
+                    <label class="control-label">original URL</label>
                     <input asp-for="originalURL" class="form-control" />
                     <span asp-validation-for="originalURL" class="text-danger"></span>
                 </div>
             </td>
             <td>
                 <div class="form-group">
-                    <label class="control-label">Ingredients</label>
+                    <label class="control-label">ingredients</label>
                     <textarea asp-for="ingredients" class="form-control rounded-0" id="ingredients" rows="10"></textarea>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Steps</label>
+                    <label class="control-label">directions</label>
                     <textarea asp-for="steps" class="form-control rounded-0" id="steps" rows="10"></textarea>
                 </div>
             </td>
