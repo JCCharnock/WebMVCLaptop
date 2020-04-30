@@ -27,16 +27,16 @@
         {
             <tr>
                 <td>
-
-                    @Html.DisplayFor(modelItem => item.name)
-
+                    @Html.ActionLink(item.name, "Details", new { id = item.id })
                 </td>
                 <td>
-                    <img onerror="this.style.display='none'" src="@Url.Content("/images/" + item.image)" alt="@Html.DisplayFor(modelItem => item.name)" class="img-thumbnail" height="84" width="84" />
+                    @{
+                        string link = "/" + Url.ActionContext.RouteData.Values["controller"] + "/Details/" + item.id;
+                        <a href="@link"><img onerror="this.style.display='none'" src="@Url.Content("/images/" + item.image)" alt="@Html.DisplayFor(modelItem => item.name)" class="img-thumbnail" height="84" width="84" /></a>
+                    }
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.id })
                 </td>
             </tr>

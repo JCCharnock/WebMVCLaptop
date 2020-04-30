@@ -24,7 +24,6 @@ namespace WebMVCLaptop.Controllers
         // GET: Recipe
         public ActionResult Index(string keyword, string searchString)
         {
-
             // need to break down space delimited keyword lists
             var klists = from r in _context.Recipes.RecipeList where (!string.IsNullOrWhiteSpace(r.keywords)) select r.keywords;
             List<string> klist = new List<string>();

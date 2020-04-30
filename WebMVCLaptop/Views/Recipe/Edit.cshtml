@@ -39,8 +39,8 @@
                     <label class="control-label">ingredients</label>
                     <textarea class="form-control rounded-0" name="ingredients" rows="10">@if (Model.ingredients!=null)foreach (Ingredient i in Model.ingredients)
     {
-        @Html.DisplayFor(modelItem => i.name)
-        @Html.Raw("\n");
+        @Html.Raw(i.name)
+        @Html.Raw("\n")
     }</textarea>
                 </div>
 
@@ -48,8 +48,8 @@
                     <label class="control-label">directions</label>
                     <textarea name="steps" class="form-control rounded-0" id="steps" rows="10">@if (Model.steps!=null)foreach (Step s in Model.steps)
     {
-        @Html.DisplayFor(modelItem => s.text)
-        @Html.Raw("\n");
+        @Html.Raw(s.text)
+        @Html.Raw("\n")
     }</textarea>
                 </div>
             </td>

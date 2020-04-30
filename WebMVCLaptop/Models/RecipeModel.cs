@@ -58,7 +58,7 @@ namespace WebMVCLaptop.Models
             for (int i = 0; i < tsarr.Length; i++)
             {
                 Ingredient ni = new Ingredient();
-                ni.name = tsarr[i];
+                ni.name = System.Net.WebUtility.HtmlEncode(tsarr[i]);
                 newrec.ingredients[i] = ni;
             }
 
@@ -74,7 +74,7 @@ namespace WebMVCLaptop.Models
             {
                 Step ns = new Step();
                 ns.order = (i + 1).ToString();
-                ns.text = tsarr[i];
+                ns.text = System.Net.WebUtility.HtmlEncode(tsarr[i]);
                 newrec.steps[i] = ns;
             }
 
@@ -98,7 +98,6 @@ namespace WebMVCLaptop.Models
             var rlist = context.Recipes.RecipeList;
             return (rlist.Max(x => int.Parse(x.id)) + 1).ToString();
         }
-
     }
 
     public class Ingredient
@@ -111,6 +110,4 @@ namespace WebMVCLaptop.Models
         public string order { get; set; }
         public string text { get; set; }
     }
-
-
 }

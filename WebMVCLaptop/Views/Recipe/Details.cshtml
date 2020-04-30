@@ -19,8 +19,9 @@
             <ul style="list-style-type:none;">
                 @foreach (var ing in Model.ingredients)
                 {
+                    string strTemp = System.Net.WebUtility.HtmlEncode(ing.name);
                     <li>
-                        @Html.DisplayFor(modelItem => ing.name)
+                        @Html.Raw(ing.name)
                     </li>
                 }
             </ul>
@@ -33,7 +34,7 @@
                 @foreach (var step in Model.steps)
                 {
                     <li>
-                        @Html.DisplayFor(modelItem => step.order). @Html.DisplayFor(modelItem => step.text)
+                        @Html.DisplayFor(modelItem => step.order). @Html.Raw(step.text)
                     </li>
                 }
             </ol>
@@ -50,7 +51,7 @@
 
     @if (!string.IsNullOrEmpty(Model.keywords))
     {
-        
+
         <p>Keywords: @Html.DisplayFor(modelItem => Model.keywords)</p>
         <br />
     }
