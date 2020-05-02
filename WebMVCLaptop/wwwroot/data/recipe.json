@@ -51,186 +51,6 @@
     "keywords": "mexican"
   },
   {
-    "id": "7",
-    "name": "Indian cabbage",
-    "ingredients": [
-      {
-        "name": "1 Head Cabbage, shredded or finely chopped"
-      },
-      {
-        "name": "2 tablespoons Oil"
-      },
-      {
-        "name": "1 teaspoon Cumin Seeds"
-      },
-      {
-        "name": "1 inch Ginger, grated"
-      },
-      {
-        "name": "1 teaspoon Paprika Powder"
-      },
-      {
-        "name": "1 tablespoon Coriander Powder"
-      },
-      {
-        "name": "3/4 cup frozen or fresh Green Peas"
-      },
-      {
-        "name": "Salt to taste"
-      }
-    ],
-    "steps": [
-      {
-        "order": "1",
-        "text": "Heat oil in a pan and add cumin seeds and ginger. Saute for a minute and add cabbage, paprika, coriander powder and salt."
-      },
-      {
-        "order": "2",
-        "text": "Mix well, and add 1/4 cup water."
-      },
-      {
-        "order": "3",
-        "text": "Cover the pan and cook for 8-10 minutes till the cabbage is fork tender."
-      },
-      {
-        "order": "4",
-        "text": "Add in the green peas and cook for another minute or too. Serve hot."
-      }
-    ],
-    "image": "",
-    "originalURL": "",
-    "notes": "",
-    "keywords": "indian"
-  },
-  {
-    "id": "8",
-    "name": "Mussels",
-    "ingredients": [
-      {
-        "name": "4 lbs live mussels"
-      },
-      {
-        "name": "2 cups dry white wine"
-      },
-      {
-        "name": "4 large shallots, finely chopped"
-      },
-      {
-        "name": "4 garlic cloves, finely chopped"
-      },
-      {
-        "name": "1/2 tsp salt"
-      },
-      {
-        "name": "1/3 cup fresh mixed herbs (such as flat-leaf parsley, chervil, or basil, chopped)"
-      },
-      {
-        "name": "6 tbsp tablespoons butter, cut into pieces"
-      }
-    ],
-    "steps": [
-      {
-        "order": "1",
-        "text": "Rinse and scrub mussels under cold water."
-      },
-      {
-        "order": "2",
-        "text": "Using your fingers or paring knife, remove beards (strings that hang from the mussel shells), and discard."
-      },
-      {
-        "order": "3",
-        "text": "In a large stockpot set over medium heat, combine wine, shallots, garlic, and salt."
-      },
-      {
-        "order": "4",
-        "text": "Simmer 5 minutes."
-      },
-      {
-        "order": "5",
-        "text": "Add mussels, cover, and increase heat to high."
-      },
-      {
-        "order": "6",
-        "text": "Cook until all mussels are open, about 5 minutes."
-      },
-      {
-        "order": "7",
-        "text": "Stir in herbs and butter."
-      },
-      {
-        "order": "8",
-        "text": "Remove from heat."
-      },
-      {
-        "order": "9",
-        "text": "Divide mussels and broth among four bowls."
-      },
-      {
-        "order": "10",
-        "text": "Serve immediately."
-      }
-    ],
-    "image": "IMG_2990.JPG",
-    "originalURL": "",
-    "notes": "",
-    "keywords": ""
-  },
-  {
-    "id": "3",
-    "name": "Southern Style Green Beans",
-    "ingredients": [
-      {
-        "name": "4 slices bacon, diced"
-      },
-      {
-        "name": "1 lbs green beans ends snapped off and longer beans snapped in half"
-      },
-      {
-        "name": "2 cups chicken broth"
-      },
-      {
-        "name": "2 cups water"
-      },
-      {
-        "name": "1 tsp seasoned salt"
-      },
-      {
-        "name": "1/2 tsp black pepper"
-      },
-      {
-        "name": "1/2 tsp garlic powder"
-      },
-      {
-        "name": "1/4 tsp red pepper flakes"
-      },
-      {
-        "name": "1 tbsp butter"
-      }
-    ],
-    "steps": [
-      {
-        "order": "1",
-        "text": "Brown and crisp bacon in a large pot. Remove bacon from pot and reserve"
-      },
-      {
-        "order": "2",
-        "text": "Add green beans to pot along with all remaining ingredients, except butter"
-      },
-      {
-        "order": "3",
-        "text": "Bring to a boil and then turn heat to medium-low. Cover and simmer for 1-2 hours, stirring occasionally"
-      },
-      {
-        "order": "4",
-        "text": "Drain beans and add butter if using. Check beans for seasoning and add extra salt and pepper to taste. I like lots of black pepper. Sprinkle with bacon and toss to distribute the bacon and butter"
-      }
-    ],
-    "image": "IMG_2952.JPG",
-    "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208",
-    "notes": "",
-    "keywords": "southern bbq"
-  },
-  {
     "id": "9",
     "name": "Hot Cross Buns",
     "ingredients": [
@@ -596,51 +416,6 @@
     "keywords": ""
   },
   {
-    "id": "2",
-    "name": "Mexican Black Beans",
-    "ingredients": [
-      {
-        "name": "1 tsp olive oil"
-      },
-      {
-        "name": "1/2 cup chopped onions"
-      },
-      {
-        "name": "3 cloves minced garlic"
-      },
-      {
-        "name": "1 16oz can undrained black beans"
-      },
-      {
-        "name": "1/4 cup chopped cilantro"
-      },
-      {
-        "name": "1 tsp cumin"
-      },
-      {
-        "name": "1/2 tsp salt"
-      }
-    ],
-    "steps": [
-      {
-        "order": "1",
-        "text": "In a small sauce pan, heat the olive oil over medium heat. Add the onions and garlic and cook for 3-4 minutes, just until the onions begin to soften."
-      },
-      {
-        "order": "2",
-        "text": "Add the undrained black beans, cilantro, cumin, and salt. Stir well and reduce heat to medium low. Allow to cook for 15-20 minutes, stirring occasionally. Taste and adjust seasonings to your liking"
-      },
-      {
-        "order": "3",
-        "text": "Serve sprinkled with more chopped cilantro and cotija cheese if desired"
-      }
-    ],
-    "image": "IMG_2988.JPG",
-    "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208",
-    "notes": "We usually have this with tacos",
-    "keywords": "mexican"
-  },
-  {
     "id": "12",
     "name": "Easy Duck Legs Confit",
     "ingredients": [
@@ -689,5 +464,264 @@
     "originalURL": "https://www.simplyrecipes.com/recipes/easy_duck_confit/",
     "notes": "",
     "keywords": ""
+  },
+  {
+    "id": "7",
+    "name": "Indian cabbage",
+    "ingredients": [
+      {
+        "name": "1 Head Cabbage, shredded or finely chopped"
+      },
+      {
+        "name": "2 tablespoons Oil"
+      },
+      {
+        "name": "1 teaspoon Cumin Seeds"
+      },
+      {
+        "name": "1 inch Ginger, grated"
+      },
+      {
+        "name": "1 teaspoon Paprika Powder"
+      },
+      {
+        "name": "1 tablespoon Coriander Powder"
+      },
+      {
+        "name": "3/4 cup frozen or fresh Green Peas"
+      },
+      {
+        "name": "Salt to taste"
+      }
+    ],
+    "steps": [
+      {
+        "order": "1",
+        "text": "Heat oil in a pan and add cumin seeds and ginger. Saute for a minute and add cabbage, paprika, coriander powder and salt."
+      },
+      {
+        "order": "2",
+        "text": "Mix well, and add 1/4 cup water."
+      },
+      {
+        "order": "3",
+        "text": "Cover the pan and cook for 8-10 minutes till the cabbage is fork tender."
+      },
+      {
+        "order": "4",
+        "text": "Add in the green peas and cook for another minute or too. Serve hot."
+      }
+    ],
+    "image": "IMG_3015.JPG",
+    "originalURL": "",
+    "notes": "",
+    "keywords": "indian"
+  },
+  {
+    "id": "13",
+    "name": "Bread Machine Bread",
+    "ingredients": [
+      {
+        "name": "1 cup \u002B 2 Tbsp Water (75\u0026#176;\u2013 85\u0026#176;F or 24\u0026#176;\u2013 30\u0026#176;C) "
+      },
+      {
+        "name": "2 tsp Butter softened "
+      },
+      {
+        "name": "3-1/4 cups Bread flour"
+      },
+      {
+        "name": "1 Tbsp Sugar"
+      },
+      {
+        "name": "1-1/2 tsp Salt"
+      },
+      {
+        "name": "2-1/2 tsp Bread machine yeast"
+      }
+    ],
+    "steps": [
+      {
+        "order": "1",
+        "text": "Follow bread machine instructions"
+      }
+    ],
+    "image": "eIMG_3016.JPG",
+    "originalURL": "",
+    "notes": "",
+    "keywords": ""
+  },
+  {
+    "id": "2",
+    "name": "Mexican Black Beans",
+    "ingredients": [
+      {
+        "name": "1 tsp olive oil"
+      },
+      {
+        "name": "1/2 cup chopped onions"
+      },
+      {
+        "name": "3 cloves minced garlic"
+      },
+      {
+        "name": "1 16oz can undrained black beans"
+      },
+      {
+        "name": "1/4 cup chopped cilantro"
+      },
+      {
+        "name": "1 tsp cumin"
+      },
+      {
+        "name": "1/2 tsp salt"
+      }
+    ],
+    "steps": [
+      {
+        "order": "1",
+        "text": "In a small sauce pan, heat the olive oil over medium heat. Add the onions and garlic and cook for 3-4 minutes, just until the onions begin to soften."
+      },
+      {
+        "order": "2",
+        "text": "Add the undrained black beans, cilantro, cumin, and salt. Stir well and reduce heat to medium low. Allow to cook for 15-20 minutes, stirring occasionally. Taste and adjust seasonings to your liking"
+      },
+      {
+        "order": "3",
+        "text": "Serve sprinkled with more chopped cilantro and cotija cheese if desired"
+      }
+    ],
+    "image": "",
+    "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208",
+    "notes": "We usually have this with tacos",
+    "keywords": "mexican"
+  },
+  {
+    "id": "8",
+    "name": "Mussels",
+    "ingredients": [
+      {
+        "name": "4 lbs live mussels"
+      },
+      {
+        "name": "2 cups dry white wine"
+      },
+      {
+        "name": "4 large shallots, finely chopped"
+      },
+      {
+        "name": "4 garlic cloves, finely chopped"
+      },
+      {
+        "name": "1/2 tsp salt"
+      },
+      {
+        "name": "1/3 cup fresh mixed herbs (such as flat-leaf parsley, chervil, or basil, chopped)"
+      },
+      {
+        "name": "6 tbsp tablespoons butter, cut into pieces"
+      }
+    ],
+    "steps": [
+      {
+        "order": "1",
+        "text": "Rinse and scrub mussels under cold water."
+      },
+      {
+        "order": "2",
+        "text": "Using your fingers or paring knife, remove beards (strings that hang from the mussel shells), and discard."
+      },
+      {
+        "order": "3",
+        "text": "In a large stockpot set over medium heat, combine wine, shallots, garlic, and salt."
+      },
+      {
+        "order": "4",
+        "text": "Simmer 5 minutes."
+      },
+      {
+        "order": "5",
+        "text": "Add mussels, cover, and increase heat to high."
+      },
+      {
+        "order": "6",
+        "text": "Cook until all mussels are open, about 5 minutes."
+      },
+      {
+        "order": "7",
+        "text": "Stir in herbs and butter."
+      },
+      {
+        "order": "8",
+        "text": "Remove from heat."
+      },
+      {
+        "order": "9",
+        "text": "Divide mussels and broth among four bowls."
+      },
+      {
+        "order": "10",
+        "text": "Serve immediately."
+      }
+    ],
+    "image": "",
+    "originalURL": "",
+    "notes": "",
+    "keywords": ""
+  },
+  {
+    "id": "3",
+    "name": "Southern Style Green Beans",
+    "ingredients": [
+      {
+        "name": "4 slices bacon, diced"
+      },
+      {
+        "name": "1 lbs green beans ends snapped off and longer beans snapped in half"
+      },
+      {
+        "name": "2 cups chicken broth"
+      },
+      {
+        "name": "2 cups water"
+      },
+      {
+        "name": "1 tsp seasoned salt"
+      },
+      {
+        "name": "1/2 tsp black pepper"
+      },
+      {
+        "name": "1/2 tsp garlic powder"
+      },
+      {
+        "name": "1/4 tsp red pepper flakes"
+      },
+      {
+        "name": "1 tbsp butter"
+      }
+    ],
+    "steps": [
+      {
+        "order": "1",
+        "text": "Brown and crisp bacon in a large pot. Remove bacon from pot and reserve"
+      },
+      {
+        "order": "2",
+        "text": "Add green beans to pot along with all remaining ingredients, except butter"
+      },
+      {
+        "order": "3",
+        "text": "Bring to a boil and then turn heat to medium-low. Cover and simmer for 1-2 hours, stirring occasionally"
+      },
+      {
+        "order": "4",
+        "text": "Drain beans and add butter if using. Check beans for seasoning and add extra salt and pepper to taste. I like lots of black pepper. Sprinkle with bacon and toss to distribute the bacon and butter"
+      }
+    ],
+    "image": "",
+    "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208",
+    "notes": "",
+    "keywords": "southern bbq"
   }
 ]
