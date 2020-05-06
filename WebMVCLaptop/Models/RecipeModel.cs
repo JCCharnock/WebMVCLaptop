@@ -6,7 +6,6 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using WebMVCLaptop.Data;
 using WebMVCLaptop.Service;
-using System.Linq;
 
 namespace WebMVCLaptop.Models
 {
@@ -30,6 +29,7 @@ namespace WebMVCLaptop.Models
         public string originalURL { get; set; }
         public string notes { get; set; }
         public string keywords { get; set; }
+        public rating rating { get; set; }
 
         // try to make create and edit the same!
         // may have to pull it all apart, collection must be identical so
@@ -47,6 +47,10 @@ namespace WebMVCLaptop.Models
             newrec.notes = collection["notes"];
             newrec.image= collection["image"];
             newrec.keywords= collection["keywords"];
+           
+            string nrstring = collection["rating"].ToString();
+            int nrint = int.Parse(nrstring);
+            newrec.rating = (rating)nrint;
 
             List<string> tlist;
             string[] tsarr;
@@ -98,6 +102,15 @@ namespace WebMVCLaptop.Models
             var rlist = context.Recipes.RecipeList;
             return (rlist.Max(x => int.Parse(x.id)) + 1).ToString();
         }
+
+        public static string GetImage(int i)
+        {
+            string[] img = { "untested", "good", "great" };
+            if ((i >= 0) & i < img.Length) return "/images/" + img[i] + ".png";
+            else return "not found";
+        }
+
+
     }
 
     public class Ingredient
@@ -110,4 +123,14 @@ namespace WebMVCLaptop.Models
         public string order { get; set; }
         public string text { get; set; }
     }
+
+    public enum rating
+    {
+        Untested=0,
+        Good=1,
+        Great=2
+    }
+
+    
+
 }

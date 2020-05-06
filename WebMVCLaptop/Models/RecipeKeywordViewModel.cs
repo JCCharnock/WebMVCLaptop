@@ -12,5 +12,6 @@ namespace WebMVCLaptop.Models
         public SelectList Keywords { get; set; }
         public string Keyword { get; set; }
         public string SearchString { get; set; }
+        public bool IncludeUntested { get; set; }
     }
 }

@@ -3,14 +3,16 @@
 @{
     ViewData["Title"] = "Index";
     var orderedModel = Model.Recipes.OrderBy(recipe => recipe.name);
+    string SString = Model.SearchString;
 }
 
 <form asp-controller="Recipe" asp-action="Index">
     <p>
-        Keyword: <select asp-for="Keyword" asp-items="Model.Keywords">
+        Keyword: <select asp-for="Keyword" asp-items="Model.Keywords" >
             <option value="">All</option>
-        </select>
-        Contained in name: <input type="text" name="SearchString">
+        </select>&nbsp;
+        Contained in name: <input type="text" name="SearchString" value=@SString>&nbsp;<label>Include untested recipes</label>
+        @Html.CheckBox("IncludeUntested")
         <input type="submit" value="Search" />
     </p>
 </form>
@@ -27,7 +29,8 @@
         {
             <tr>
                 <td>
-                    @Html.ActionLink(item.name, "Details", new { id = item.id })
+                    @Html.ActionLink(item.name, "Details", new { id = item.id }, new { @class = "largetext" })
+                    <img src="@WebMVCLaptop.Models.Recipe.GetImage((int)item.rating)" height="42" width="42" />
                 </td>
                 <td>
                     @{

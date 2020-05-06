@@ -9,6 +9,7 @@ using WebMVCLaptop.Models;
 using WebMVCLaptop.Data;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.View;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 namespace WebMVCLaptop.Controllers
 {
@@ -22,7 +23,7 @@ namespace WebMVCLaptop.Controllers
         }
 
         // GET: Recipe
-        public ActionResult Index(string keyword, string searchString)
+        public ActionResult Index(string keyword, string searchString, bool IncludeUntested)
         {
             // need to break down space delimited keyword lists
             var klists = from r in _context.Recipes.RecipeList where (!string.IsNullOrWhiteSpace(r.keywords)) select r.keywords;
@@ -46,15 +47,27 @@ namespace WebMVCLaptop.Controllers
                 recs = recs.Where(s => s.name.ToUpper().Contains(searchString.ToUpper()));
             }
 
+            //filter out untested if necesssary
+            if (!IncludeUntested)
+            {
+                recs = recs.Where(s => (s.rating != rating.Untested));
+            }
+
             if (!string.IsNullOrEmpty(keyword))
             {
                 // replace this with some fancy LINQ query when I know how
                 recs = FilterRecipesByKeyword(recs, keyword);
             }
 
+            SelectList ksl = new SelectList(klist);
+
             var recipeKeywordVM = new RecipeKeywordViewModel()
             {
-                Keywords = new SelectList(klist),
+                //retain search string + keywords and checkbox
+                SearchString = searchString,
+                IncludeUntested = IncludeUntested,
+                Keyword = keyword,
+                Keywords = ksl,
                 Recipes = recs.ToList()
             };
 
@@ -64,7 +77,7 @@ namespace WebMVCLaptop.Controllers
         private IEnumerable<Recipe> FilterRecipesByKeyword(IEnumerable<Recipe> recs, string keyword)
         {
             List<Recipe> ret = new List<Recipe>();
-            foreach(Recipe rec in recs)
+            foreach (Recipe rec in recs)
             {
                 if (rec.keywords != null)
                 {

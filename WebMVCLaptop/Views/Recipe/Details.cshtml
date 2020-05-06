@@ -7,7 +7,11 @@
 
 <table>
     <tr>
-        <td><h4>@Html.DisplayFor(model => model.name)</h4></td>
+        <td>
+            <h4>
+                @Html.DisplayFor(model => model.name)
+                <img src="@Recipe.GetImage((int)Model.rating)" height="42" width="42" />
+            </h4>
         <td><img onerror="this.style.display='none'" src="@strimage" class="img-thumbnail" width="304" height="236" /></td>
     </tr>
 </table>

@@ -33,11 +33,18 @@
                     <input asp-for="originalURL" class="form-control" />
                     <span asp-validation-for="originalURL" class="text-danger"></span>
                 </div>
+                <div class="form-group">
+                    <label asp-for="rating" class="control-label"></label>
+                    <select asp-for="rating" asp-items="@Html.GetEnumSelectList(typeof(WebMVCLaptop.Models.rating))">
+                    </select>
+                    <span asp-validation-for="rating" class="text-danger"></span>
+                </div>
+
             </td>
             <td>
                 <div class="form-group">
                     <label class="control-label">ingredients</label>
-                    <textarea class="form-control rounded-0" name="ingredients" rows="10">@if (Model.ingredients!=null)foreach (Ingredient i in Model.ingredients)
+                    <textarea class="form-control rounded-0" name="ingredients" rows="12">@if (Model.ingredients!=null)foreach (Ingredient i in Model.ingredients)
     {
         @Html.Raw(i.name)
         @Html.Raw("\n")
@@ -46,7 +53,7 @@
 
                 <div class="form-group">
                     <label class="control-label">directions</label>
-                    <textarea name="steps" class="form-control rounded-0" id="steps" rows="10">@if (Model.steps!=null)foreach (Step s in Model.steps)
+                    <textarea name="steps" class="form-control rounded-0" id="steps" rows="12">@if (Model.steps!=null)foreach (Step s in Model.steps)
     {
         @Html.Raw(s.text)
         @Html.Raw("\n")

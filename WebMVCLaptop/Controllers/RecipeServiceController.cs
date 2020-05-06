@@ -27,12 +27,5 @@ namespace WebMVCLaptop.Controllers
             if (string.IsNullOrEmpty(id)) return recipeService.GetRecipes();
             else return recipeService.GetSingle(id);
         }
-
-        //[HttpGet]
-        //public Recipe GetSingle(string id)
-        //{
-        //    return recipeService.GetSingle(id);
-        //}
-
     }
 }
