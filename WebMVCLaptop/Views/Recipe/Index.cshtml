@@ -29,8 +29,8 @@
         {
             <tr>
                 <td>
-                    @Html.ActionLink(item.name, "Details", new { id = item.id }, new { @class = "largetext" })
                     <img src="@WebMVCLaptop.Models.Recipe.GetImage((int)item.rating)" height="42" width="42" />
+                    @Html.ActionLink(item.name, "Details", new { id = item.id }, new { @class = "largetext" })
                 </td>
                 <td>
                     @{
